@@ -1,0 +1,33 @@
+query Species($speciesName: String!){
+
+    pokemon_v2_pokemonspecies(where: {
+        name: {
+            _ilike: $speciesName
+        }
+    }){
+        id
+        name
+        capture_rate
+        pokemon_v2_pokemoncolor{
+            id
+            name
+        }
+        pokemon_v2_pokemons{
+            id
+            name
+        }
+    }
+}
+
+query Pokemon($pkId: Int!){
+    pokemon_v2_pokemon_by_pk(id:$pkId){
+        id
+        name
+        pokemon_v2_pokemonabilities{
+            id
+            pokemon_v2_ability{
+                name
+            }
+        }
+    }
+}
