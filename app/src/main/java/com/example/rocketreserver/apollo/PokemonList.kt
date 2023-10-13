@@ -102,7 +102,7 @@ fun PokemonList(onItemClick: (pokemon: SpeciesQuery.Pokemon_v2_pokemon) -> Unit)
 
 
             AnimatedVisibility(visible = pkSpeciesData.isNotEmpty()) {
-                LazyColumn {
+                LazyColumn(modifier = Modifier.background(Color(0xFFEEEEEE))) {
                     items(pkSpeciesData) {
                         SpeciesItem(it, onItemClick = onItemClick)
                     }
