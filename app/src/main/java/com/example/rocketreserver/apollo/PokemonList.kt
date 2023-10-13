@@ -1,6 +1,5 @@
 package com.example.rocketreserver.apollo
 
-import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
@@ -44,19 +43,13 @@ fun PokemonList(onItemClick: (pokemon: SpeciesQuery.Pokemon_v2_pokemon) -> Unit)
     }
     var value by remember { mutableStateOf("")}
 
-    // 创建一个 [InfiniteTransition] 实列用来管理子动画
     val infiniteTransition = rememberInfiniteTransition()
 
-    // 创建一个float类型的子动画
     val angle by infiniteTransition.animateFloat(
-        initialValue = 0F, //动画创建后，会从[initialValue] 执行至[targetValue]，
+        initialValue = 0F,
         targetValue = 360F,
         animationSpec = infiniteRepeatable(
-            //tween是补间动画，使用线性[LinearEasing]曲线无限重复1000 ms的补间动画
             animation = tween(1000, easing = LinearEasing),
-            //每次迭代后的动画(即每1000毫秒), 动画将从上面定义的[initialValue]重新开始执行
-            //动画执行模式
-            // repeatMode = RepeatMode.Restart //此处不需要，它自己会无线重复执行
         )
     )
 
@@ -71,10 +64,8 @@ fun PokemonList(onItemClick: (pokemon: SpeciesQuery.Pokemon_v2_pokemon) -> Unit)
                 if (data.isEmpty()){
                     Toast.makeText(context2, "not find species, please enter the other species name" , Toast.LENGTH_SHORT).show()
                 }
-                Log.d("hml", "PokemonList Success ${response.data}")
             }catch (e:Exception){
                 Toast.makeText(context2, "request failed, please enter the correct species name" , Toast.LENGTH_SHORT).show()
-                Log.d("hml", "PokemonList faile $e")
             }
             loading = false
         }

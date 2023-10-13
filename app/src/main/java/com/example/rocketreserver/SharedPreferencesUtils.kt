@@ -5,10 +5,8 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
-object TokenRepository {
-    private const val KEY_TOKEN = "TOKEN"
+object SharedPreferencesUtils {
     private const val FIRST_OPEN = "FIRST_OPEN"
-
     private lateinit var preferences: SharedPreferences
 
     fun init(context: Context) {
@@ -25,20 +23,10 @@ object TokenRepository {
         )
     }
 
-    fun getToken(): String? {
-        return preferences.getString(KEY_TOKEN, null)
-    }
 
-    fun setToken(token: String) {
+    fun removeIsFirstOpen() {
         preferences.edit().apply {
-            putString(KEY_TOKEN, token)
-            apply()
-        }
-    }
-
-    fun removeToken() {
-        preferences.edit().apply {
-            remove(KEY_TOKEN)
+            remove(FIRST_OPEN)
             apply()
         }
     }

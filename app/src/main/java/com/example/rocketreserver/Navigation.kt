@@ -1,11 +1,10 @@
 package com.example.rocketreserver
 
 object NavigationDestinations {
-    const val LAUNCH_LIST = "launchList"
-    const val LAUNCH_DETAILS = "launchDetails"
-    const val LOGIN = "login"
+    const val POKEMON_LIST = "pokemon_list"
+    const val POKEMON_DETAILS = "pokemon_details"
 }
 
 object NavigationArguments {
-    const val POKEMON_ID = "pokemonId"
+    const val POKEMON_ID = "pokemon_id"
 }

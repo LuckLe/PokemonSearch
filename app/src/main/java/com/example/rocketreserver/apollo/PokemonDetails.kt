@@ -32,7 +32,6 @@ fun PokemonDetails(pkId: Int, navController: NavHostController) {
         pokemonFlow.value = null
         val response = apolloClient.query(PokemonQuery(pkId)).execute()
         pokemonFlow.value = response.data?.pokemon_v2_pokemon_by_pk
-        Log.d("hml", "PokemonDetails Success ${response.data}")
     }
 
     Column(modifier = Modifier.padding(12.dp)) {
